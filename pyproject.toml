@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-ai-agent-eval-platform"
+version = "0.1.0"
+description = "MCP-style AI agent evaluation platform for RAG/wiki workflows with gates, reports, canary policy, and telemetry."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Codex" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+otel = ["opentelemetry-api>=1.25", "opentelemetry-sdk>=1.25"]
+
+[project.scripts]
+agent-eval = "agent_eval_platform.cli:main"
+agent-eval-mcp = "agent_eval_platform.mcp_server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

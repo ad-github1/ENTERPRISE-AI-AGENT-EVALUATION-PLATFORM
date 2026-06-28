@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.local
+*.pem
+*.key
+
+# Data / outputs
+data/
+datasets/
+logs/
+*.log
+outputs/
+reports/*.json
+reports/*.csv
+
+# Cache
+.cache/
+.pytest_cache/
+.mypy_cache/
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

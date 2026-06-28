@@ -1,0 +1,14 @@
+{
+  "min_case_faithfulness": 0.72,
+  "min_case_retrieval_relevance": 0.58,
+  "max_case_hallucination_risk": 0.38,
+  "max_case_latency_ms": 1200.0,
+  "max_case_cost_usd": 0.025,
+  "min_pass_rate": 0.80,
+  "min_avg_faithfulness": 0.78,
+  "min_avg_retrieval_relevance": 0.65,
+  "max_avg_hallucination_risk": 0.30,
+  "max_p95_latency_ms": 900.0,
+  "max_p99_latency_ms": 1200.0,
+  "max_avg_cost_usd": 0.015
+}
