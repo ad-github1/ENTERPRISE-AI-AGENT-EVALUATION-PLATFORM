@@ -21,7 +21,8 @@ A dependency-light evaluation platform for RAG/wiki-quality AI agents. It scores
 ## Quick Start
 
 ```bash
-cd outputs/enterprise-ai-agent-eval-platform
+git clone https://github.com/ad-github1/ENTERPRISE-AI-AGENT-EVALUATION-PLATFORM.git
+cd ENTERPRISE-AI-AGENT-EVALUATION-PLATFORM
 PYTHONPATH=src python3 -m agent_eval_platform generate-cases --count 120 --out examples/wiki_eval_cases.jsonl
 PYTHONPATH=src python3 -m agent_eval_platform evaluate \
   --cases examples/wiki_eval_cases.jsonl \
