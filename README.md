@@ -33,6 +33,10 @@ PYTHONPATH=src python3 -m agent_eval_platform evaluate \
   --traces-out reports/traces.jsonl
 PYTHONPATH=src python3 -m unittest discover -s tests
 ```
+## Testing
+
+```bash
+PYTHONPATH=src python3 -m unittest discover -s tests
 
 After installation:
 
