@@ -119,3 +119,66 @@ PYTHONPATH=src python3 -m agent_eval_platform canary \
 ```
 
 The decision is `hold`, `increase_traffic`, or `promote` based on suite quality and minimum case coverage.
+
+## Evaluation Results
+
+### Evaluation Run
+
+```bash
+PYTHONPATH=src python3 -m agent_eval_platform evaluate \
+  --cases examples/wiki_eval_cases.jsonl \
+  --gate examples/quality_gate.json \
+  --variant candidate \
+  --json-out reports/eval_result.json \
+  --markdown-out reports/eval_report.md \
+  --traces-out reports/traces.jsonl
+```
+
+### Aggregate Metrics
+
+| Metric                      |     Value |
+| --------------------------- | --------: |
+| Evaluation cases            |       120 |
+| Pass rate                   |     82.5% |
+| Average faithfulness        |     0.825 |
+| Average retrieval relevance |     0.838 |
+| Average hallucination risk  |     0.153 |
+| p50 latency                 | 392.58 ms |
+| p95 latency                 | 663.40 ms |
+| p99 latency                 | 872.87 ms |
+| Average cost                |  $0.00393 |
+| Total cost                  |  $0.47158 |
+
+### Canary Decision
+
+```bash
+PYTHONPATH=src python3 -m agent_eval_platform canary \
+  --result reports/eval_result.json \
+  --config examples/canary_config.json \
+  --json-out reports/canary_decision.json
+```
+
+Result:
+
+```json
+{
+  "action": "hold",
+  "next_traffic_percent": 10.0,
+  "reasons": [
+    "pass_rate 0.825 < 0.900"
+  ]
+}
+```
+
+The canary policy correctly blocked promotion because the candidate run did not meet the configured 90% pass-rate threshold. This demonstrates how the platform can prevent low-quality agent versions from being promoted automatically.
+
+### Observability
+
+The evaluation emits OpenTelemetry-style JSONL traces to:
+
+```text
+reports/traces.jsonl
+```
+
+Each case generates spans for faithfulness, retrieval relevance, hallucination risk, and final case-level pass/fail status, enabling debugging of failed agent responses.
+
