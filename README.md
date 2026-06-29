@@ -38,6 +38,12 @@ PYTHONPATH=src python3 -m unittest discover -s tests
 ```bash
 PYTHONPATH=src python3 -m unittest discover -s tests
 
+Current local result:
+
+Ran 5 tests in 0.015s
+
+OK
+
 After installation:
 
 ```bash
